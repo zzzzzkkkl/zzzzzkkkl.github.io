@@ -5094,6 +5094,17 @@ figure.highlight pre .javascript .function {
 #post .ads-wrap {
   margin: 40px 0;
 }
+.post-content {
+  max-width: 1000px; /* 宽度和他的差不多，可微调 */
+  margin: 0 auto; /* 水平居中 */
+  padding: 0 20px; /* 左右留空白，避免贴边 */
+  -webkit-box-shadow: none;
+  box-shadow: none; /* 去掉默认的卡片阴影，更简洁 */
+}
+.layout {
+  max-width: 100%; /* 取消页面最大宽度限制 */
+  padding: 0; /* 去掉默认边距 */
+}
 .relatedPosts {
   margin-top: 40px;
 }
