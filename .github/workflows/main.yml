@@ -32,7 +32,7 @@ jobs:
       - name: 部署到GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GHTOKEN }}
           publish_dir: ./public
           publish_branch: main
           force_orphan: true
