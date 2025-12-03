@@ -1,0 +1,38 @@
+name: Hexo Auto Deploy
+
+on:
+  push:
+    branches:
+      - blog-source  # 检测blog-source分支更新时自动触发
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取源文件
+        uses: actions/checkout@v4
+        with:
+          ref: blog-source
+          fetch-depth: 0
+
+      - name: 安装Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 安装依赖
+        run: |
+          npm install hexo-cli -g
+          npm install
+
+      - name: 生成静态文件
+        run: hexo generate
+
+      - name: 部署到GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: main
+          force_orphan: true
